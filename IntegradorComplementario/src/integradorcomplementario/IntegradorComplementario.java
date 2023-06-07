@@ -160,13 +160,18 @@ public class IntegradorComplementario {
         
         
         consola.mostrarEstado(armadura);
-        for (int i = 0; i < 100000; i++) {
-            armServ.caminar(armadura, 1000);
-            consola.mostrarEstado(armadura);
-        }
+        consola.radar();
+//        for (int i = 0; i < 100000; i++) {
+//            armServ.disparar(armadura, 1500);
+//            consola.mostrarEstado(armadura);
+//            if(armadura.getBotas().get(0).isDestruido() || armadura.getBotas().get(1).isDestruido() || armadura.getGuantes().get(0).isDestruido() || armadura.getGuantes().get(1).isDestruido()){
+//                System.out.println("Destruido. Ya no es posible realizar la acción.");
+//                break;
+//            }
+//        }
         
         
-        consola.mostrarEstado(armadura);
+        
     }
     
     

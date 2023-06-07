@@ -12,7 +12,7 @@ package Entidades;
 public class Casco extends ParteDeArmadura{
 
     public Casco() {
-        consumo = 1;
+        consumo = 1000;
         danhado = false;
         destruido = false;
     }

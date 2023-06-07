@@ -12,7 +12,7 @@ package Entidades;
 public class Guante extends ParteDeArmadura{
 
     public Guante() {
-        consumo = 1;
+        consumo = 1000;
         danhado = false;
         destruido = false;
     }

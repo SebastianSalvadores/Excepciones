@@ -18,7 +18,7 @@ public class Armadura {
     private ArrayList<Bota> botas;
     private ArrayList<Guante> guantes;
     private Casco casco;
-    public static Float max_energia = 999999999.0f;
+    public static Float max_energia = 99999999999.0f;
     
     public Armadura() {
         botas = new ArrayList();
