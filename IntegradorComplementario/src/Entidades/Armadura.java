@@ -102,6 +102,11 @@ public class Armadura {
         this.casco = casco;
     }
 
+    @Override
+    public String toString() {
+        return "Armadura{" + "resistencia=" + resistencia + ", salud=" + salud + ", energia=" + energia + '}';
+    }
+
     
 
     

@@ -20,5 +20,10 @@ public class Guante extends ParteDeArmadura{
     public Guante(Integer consumo, boolean danhado, boolean destruido) {
         super(consumo, danhado, destruido);
     }
+
+    @Override
+    public String toString() {
+        return "Guante{" + "danhado = " + danhado + ", destruido = " + destruido + '}';
+    }
    
 }

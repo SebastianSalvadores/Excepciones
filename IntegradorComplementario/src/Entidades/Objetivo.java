@@ -5,7 +5,6 @@
  */
 package Entidades;
 
-import java.util.Comparator;
 
 /**
  *
@@ -17,6 +16,7 @@ public class Objetivo {
     private Integer coordenadaZ;
     private boolean hostil;
     private Integer resistencia;
+    private Double distancia;
 
     public Objetivo() {
         coordenadaX = (int) (Math.random() * 3000);
@@ -74,10 +74,18 @@ public class Objetivo {
         this.resistencia = resistencia;
     }
 
+    public Double getDistancia() {
+        return distancia;
+    }
+
+    public void setDistancia(Double distancia) {
+        this.distancia = distancia;
+    }
+
     @Override
     public String toString() {
-        return "Objetivo{" + "coordenadaX=" + coordenadaX + ", coordenadaY=" + coordenadaY + ", coordenadaZ=" + coordenadaZ + ", hostil=" + hostil + ", resistencia=" + resistencia + '}';
+        return "Objetivo{" + "coordenadaX=" + coordenadaX + ", coordenadaY=" + coordenadaY + ", coordenadaZ=" + coordenadaZ + ", hostil=" + hostil + ", resistencia=" + resistencia + ", distancia=" + distancia + '}';
     }
-    
+
     
 }

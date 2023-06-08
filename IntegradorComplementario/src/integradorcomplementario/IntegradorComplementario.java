@@ -143,6 +143,8 @@ package integradorcomplementario;
 import Entidades.Armadura;
 import Entidades.JARVIS;
 import Servicios.ArmaduraServicio;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 /**
  *
@@ -154,13 +156,71 @@ public class IntegradorComplementario {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Scanner leer = new Scanner(System.in).useDelimiter("\n");
         Armadura armadura = new Armadura();
         ArmaduraServicio armServ = new ArmaduraServicio();
         JARVIS consola = new JARVIS();
+        int opc = 0;
+        System.out.println("Hola de nuevo, Tony. Bienvenido a la Interfaz JARVIS.");
+        do {            
+            System.out.println("Menu"
+                    + "\n1. Mostrar estado del reactor"
+                    + "\n2. Activar Radar"
+                    + "\n3. Realizar accion"
+                    + "\n4. Salir");
+            try {
+                System.out.println("Ingrese una opcion: ");
+                opc = leer.nextInt();
+            } catch (InputMismatchException ime) {
+                System.out.println("Error. Ingrese un numero entero.");
+                leer.next();
+            }
+            switch (opc) {
+                case 1:
+                    consola.mostrarEstado(armadura);
+                    break;
+                case 2:
+                    consola.radar(armadura);
+                    break;
+                case 3:
+                    do {                        
+                        System.out.println("Menu Acciones"
+                                + "\n1. Caminar"
+                                + "\n2. Correr"
+                                + "\n3. Propulsar"
+                                + "\n4. Volar"
+                                + "\n5. Volver Atras");
+                        try {
+                            System.out.println("Ingrese una opcion:");
+                            opc = leer.nextInt();
+                        } catch (InputMismatchException ime) {
+                            System.out.println("Error. Ingrese un numero entero.");
+                            leer.next();
+                        }
+                        switch (opc) {
+                            case 1:
+                                armServ.caminar(armadura, 1500);
+                                break;
+                            case 2:
+                                armServ.correr(armadura, 1500);
+                                break;
+                            case 3:
+                                armServ.propulsar(armadura, 1500);
+                                break;
+                            case 4:
+                                armServ.volar(armadura, 1500);
+                                break;
+                        }
+                    } while (opc != 5);
+                default:
+                    
+            }
+        }while (opc != 4);
         
         
-        consola.mostrarEstado(armadura);
-        consola.radar();
+        
+        
+        
 //        for (int i = 0; i < 100000; i++) {
 //            armServ.disparar(armadura, 1500);
 //            consola.mostrarEstado(armadura);

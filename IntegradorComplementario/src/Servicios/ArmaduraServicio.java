@@ -157,7 +157,7 @@ public class ArmaduraServicio {
     
     public void disparar(Armadura armadura, int tiempo){
         ArrayList<Guante> guantes = armadura.getGuantes();
-        if(guantes.get(0).isDanhado() == false && guantes.get(1).isDanhado() == false){
+        if(guantes.get(0).isDanhado() == false || guantes.get(1).isDanhado() == false){
             int consumo = guantes.get(0).getCosumo() * 3;
             float energia = armadura.getEnergia();
             energia -= (consumo * tiempo);
