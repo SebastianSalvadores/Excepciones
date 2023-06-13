@@ -32,6 +32,7 @@ import Entidades.Armadura;
 import Entidades.Bota;
 import Entidades.Casco;
 import Entidades.Guante;
+import Entidades.JARVIS;
 import Entidades.ParteDeArmadura;
 import java.util.ArrayList;
 
@@ -41,6 +42,7 @@ import java.util.ArrayList;
  * @author Sebastian
  */
 public class ArmaduraServicio {
+    JARVIS consola = new JARVIS();
     
     public void caminar(Armadura armadura, int tiempo){
         ArrayList<Bota> botas = armadura.getBotas();
@@ -55,61 +57,146 @@ public class ArmaduraServicio {
         }else{
             if(botas.get(0).isDanhado() && botas.get(0).isDestruido() == false){
                 //reparar bota 0
-                botas.get(0).setDanhado(true);
-            }else if(botas.get(1).isDanhado() && botas.get(1).isDestruido() == false){
+                System.out.println("La bota 1 fue dañada!");
+                consola.reparar(botas.get(0));
+            }
+            if(botas.get(1).isDanhado() && botas.get(1).isDestruido() == false){
                 //reparar bota 1
-                botas.get(1).setDanhado(true);
-            }else if(botas.get(0).isDestruido() && botas.get(1).isDestruido()){
-                System.out.println("No es posible caminar. Bota destruida.");
+                System.out.println("La bota 2 fue dañada!");
+                consola.reparar(botas.get(1));
             }
         }
     }
     
     public void correr(Armadura armadura, int tiempo){
         ArrayList<Bota> botas = armadura.getBotas();
-        int consumo = botas.get(0).getCosumo() * 2;
-        float energia = armadura.getEnergia();
-        energia -= (consumo * tiempo);
-        armadura.setEnergia(energia);
+        if(botas.get(0).isDanhado() == false && botas.get(1).isDanhado() == false){
+            int consumo = botas.get(0).getCosumo() * 2;
+            float energia = armadura.getEnergia();
+            energia -= (consumo * tiempo);
+            armadura.setEnergia(energia);
+            for (Bota bota : botas) {
+                usarDispositivo(bota);
+            }
+        }else{
+            if(botas.get(0).isDanhado() && botas.get(0).isDestruido() == false){
+                //reparar bota 0
+                System.out.println("La bota 1 fue dañada!");
+                consola.reparar(botas.get(0));
+            }
+            if(botas.get(1).isDanhado() && botas.get(1).isDestruido() == false){
+                //reparar bota 1
+                System.out.println("La bota 2 fue dañada!");
+                consola.reparar(botas.get(1));
+            }
+        }
     }
     
     public void propulsar(Armadura armadura, int tiempo){
         ArrayList<Bota> botas = armadura.getBotas();
-        int consumo = botas.get(0).getCosumo() * 3;
-        float energia = armadura.getEnergia();
-        energia -= (consumo * tiempo);
-        armadura.setEnergia(energia);
+        if(botas.get(0).isDanhado() == false && botas.get(1).isDanhado() == false){
+            int consumo = botas.get(0).getCosumo() * 3;
+            float energia = armadura.getEnergia();
+            energia -= (consumo * tiempo);
+            armadura.setEnergia(energia);
+            for (Bota bota : botas) {
+                usarDispositivo(bota);
+            }
+        }else{
+            if(botas.get(0).isDanhado() && botas.get(0).isDestruido() == false){
+                //reparar bota 0
+                System.out.println("La bota 1 fue dañada!");
+                consola.reparar(botas.get(0));
+            }
+            if(botas.get(1).isDanhado() && botas.get(1).isDestruido() == false){
+                //reparar bota 1
+                System.out.println("La bota 2 fue dañada!");
+                consola.reparar(botas.get(1));
+            }
+        }
     }
     
     public void volar(Armadura armadura, int tiempo){
         ArrayList<Bota> botas = armadura.getBotas();
         ArrayList<Guante> guantes = armadura.getGuantes();
-        int consumoBotas = botas.get(0).getCosumo() * 3;
-        int consumoGuantes = guantes.get(0).getCosumo() * 2;
-        float energia = armadura.getEnergia();
-        energia -= ((consumoBotas + consumoGuantes) * tiempo);
-        armadura.setEnergia(energia);
+        if(botas.get(0).isDanhado() == false && botas.get(1).isDanhado() == false && guantes.get(0).isDanhado() == false && guantes.get(1).isDanhado() == false){
+            int consumoBotas = botas.get(0).getCosumo() * 3;
+            int consumoGuantes = guantes.get(0).getCosumo() * 2;
+            float energia = armadura.getEnergia();
+            energia -= ((consumoBotas + consumoGuantes) * tiempo);
+            armadura.setEnergia(energia);
+            for (Bota bota : botas) {
+                usarDispositivo(bota);
+            }
+            for (Guante guante : guantes) {
+                usarDispositivo(guante);
+            }
+        }else{
+            if(botas.get(0).isDanhado() && botas.get(0).isDestruido() == false){
+                //reparar bota 0
+                System.out.println("La bota 1 fue dañada!");
+                consola.reparar(botas.get(0));
+            }
+            if(botas.get(1).isDanhado() && botas.get(1).isDestruido() == false){
+                //reparar bota 1
+                System.out.println("La bota 2 fue dañada!");
+                consola.reparar(botas.get(1));
+            }
+            if(guantes.get(0).isDanhado() && guantes.get(0).isDestruido() == false){
+                //reparar guante 0
+                System.out.println("El guante 1 fue dañado!");
+                consola.reparar(guantes.get(0));
+            }
+            if(guantes.get(1).isDanhado() && guantes.get(1).isDestruido() == false){
+                //reparar guante 0
+                System.out.println("El guante 2 fue dañado!");
+                consola.reparar(guantes.get(1));
+            }
+        }
     }
     
     public void disparar(Armadura armadura, int tiempo){
         ArrayList<Guante> guantes = armadura.getGuantes();
-        int consumo = guantes.get(0).getCosumo() * 3;
-        float energia = armadura.getEnergia();
-        energia -= (consumo * tiempo);
-        armadura.setEnergia(energia);
+        if(guantes.get(0).isDanhado() == false || guantes.get(1).isDanhado() == false){
+            int consumo = guantes.get(0).getCosumo() * 3;
+            float energia = armadura.getEnergia();
+            energia -= (consumo * tiempo);
+            armadura.setEnergia(energia);
+            for (Guante guante : guantes) {
+                usarDispositivo(guante);
+            }
+        }else{
+            if(guantes.get(0).isDanhado() && guantes.get(0).isDestruido() == false){
+                //reparar guante 0
+                System.out.println("El guante 1 fue dañado!");
+                consola.reparar(guantes.get(0));
+            }
+            if(guantes.get(1).isDanhado() && guantes.get(1).isDestruido() == false){
+                //reparar guante 0
+                System.out.println("El guante 2 fue dañado!");
+                consola.reparar(guantes.get(1));
+            }
+        }
     }
     
     public void consola(Armadura armadura, int tiempo){
         Casco casco = armadura.getCasco();
-        int consumo = casco.getCosumo();
-        float energia = armadura.getEnergia();
-        energia -= (consumo * tiempo);
-        armadura.setEnergia(energia);
+        if(casco.isDanhado() == false){
+            int consumo = casco.getCosumo();
+            float energia = armadura.getEnergia();
+            energia -= (consumo * tiempo);
+            armadura.setEnergia(energia);
+            usarDispositivo(casco);
+        }else if(casco.isDanhado() && casco.isDestruido() == false){
+            //reparar casco
+            System.out.println("El casco fue dañado!");
+            consola.reparar(casco);
+        }
     }
     
     public void usarDispositivo(ParteDeArmadura dispositivo){
         double azar = Math.random() * 100;
-        if(azar >= 70){
+        if(azar <= 30){
             dispositivo.setDanhado(true);
         }
     }
